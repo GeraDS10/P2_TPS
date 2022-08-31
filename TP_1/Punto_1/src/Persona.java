@@ -1,10 +1,13 @@
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Period;
 import java.util.Date;
 
 public class Persona {
     String nombre = "N";
     String apellido = "N";
     int edad;
-    int fechaNacimiento = 1/1/2000;
+    LocalDate fechaNacimiento = LocalDate.of(2000, 1, 1);
     int dni;
     String sexo = "Femenino";
     double peso = 1;
@@ -22,13 +25,13 @@ public class Persona {
         this.nombre = nombre;
     }
 
-    public Persona(int edad, int dni, int fechaNacimiento){
+    public Persona(int edad, int dni, LocalDate fechaNacimiento){
         this.edad = edad;
         this.dni = dni;
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public Persona (int edad, int dni, String nombre, int fechaNacimiento){
+    public Persona (int edad, int dni, String nombre, LocalDate fechaNacimiento){
         this.edad = edad;
         this.dni = dni;
         this.nombre = nombre;
@@ -59,7 +62,7 @@ public class Persona {
         this.edad = edad;
     }
 
-    public void setFechaNacimiento(int fechaNacimiento) {
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -96,25 +99,48 @@ public class Persona {
     }
 
     public boolean cumpleAnios(){
-
+        if(LocalDate.now() == fechaNacimiento){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     public boolean esMayorEdad(){
-
+        Period anios = Period.between(this.fechaNacimiento, LocalDate.now());
+        if(anios.getYears() >= 18){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean puedeVotar(){
-
+        Period anios = Period.between(this.fechaNacimiento, LocalDate.now());
+        if(anios.getYears() >= 16){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean esCoherenteEdad(){
-
+        Period anios = Period.between(this.fechaNacimiento, LocalDate.now());
+        if(anios.getYears() == this.edad){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public String datosPersona(){
-
+        return
+                "Nombre: " + this.nombre +
+                "\nApellido: " + this.apellido +
+                "\nFecha de Nacimiento: " + this.fechaNacimiento +
+                "\nDNI: " + this.dni +
+                "\nSexo: " + this.sexo +
+                "\nPeso: " + this.peso +
+                "\nAltura: " + this.altura;
     }
-
-
-
-
 }
