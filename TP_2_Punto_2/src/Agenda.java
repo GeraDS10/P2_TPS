@@ -3,11 +3,15 @@ import java.util.ArrayList;
 public class Agenda {
 
     String nombre;
+
+    int numero;
     private ArrayList<Reunion> reuniones;
     private ArrayList<Usuario> asistentes;
 
     public Agenda(String nombre){
+
         this.nombre= nombre;
+        numero++;
     }
 
     public void addReunion(Reunion r){
@@ -53,4 +57,7 @@ public class Agenda {
         }
     }
 
+    public static void main(String[] args) {
+
+    }
 }
