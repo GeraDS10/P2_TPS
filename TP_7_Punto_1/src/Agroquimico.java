@@ -23,7 +23,21 @@ public class Agroquimico {
         return new ArrayList(estadosPatologicosTratados);
     }
 
-    public boolean trataPatologia(String patologia){
+    public boolean trataEstadoPatologico(String patologia){
+        return this.estadosPatologicosTratados.contains(patologia);
+    }
+
+    public boolean cultivoDesaconsejado(Cultivo otro){
+        for (Cultivo c: this.cultivosDesaconsejados
+             ) {
+            if(c.equals(otro)){
+                return true;
+            }
+        }
         return false;
+    }
+
+    public String toString(){
+        return this.getNombre();
     }
 }

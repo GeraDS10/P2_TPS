@@ -10,20 +10,46 @@ public class Cultivo {
     }
 
     public String getNombre() {
+
         return nombre;
     }
     public void addEnfermedadFrecuente(Enfermedad e){
+
         this.enfermedadesFrecuentes.add(e);
     }
 
     public ArrayList<Enfermedad> getEnfermedadesFrecuentes() {
+
         return new ArrayList(enfermedadesFrecuentes);
     }
 
     public boolean puedeServir(Agroquimico agroquimico){
-        for (Enfermedad e: enfermedadesFrecuentes
-             ) {
-            agroquimico.trataPatologia()
+        if(!agroquimico.cultivoDesaconsejado(this)){
+            for (Enfermedad e:this.enfermedadesFrecuentes
+                 ) {
+                if(!e.puedeTratarte(agroquimico)){
+                    return false;
+                }
+            }
+            return true;
+        }else {
+            return false;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        try{
+            Cultivo otro = (Cultivo) o;
+            return this.getNombre().equals(otro.getNombre());
+
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return this.getNombre();
     }
 }

@@ -18,10 +18,20 @@ public class Enfermedad {
         this.estadosPatologicos.add(nuevo);
     }
 
-    public boolean tieneEstadoPatologico(String patologia){
-
-        return this.estadosPatologicos.contains(patologia);
+    public boolean puedeTratarte(Agroquimico a){
+        for (String patologia: this.estadosPatologicos
+             ) {
+            if(!a.trataEstadoPatologico(patologia)){
+                return false;
+            }
+        }
+        return true;
     }
+    @Override
+    public String toString(){
+        return this.getNombre();
+    }
+
 
 
 }
