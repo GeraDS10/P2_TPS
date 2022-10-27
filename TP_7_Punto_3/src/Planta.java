@@ -3,12 +3,16 @@ import java.util.ArrayList;
 public class Planta {
     private String nombreCientifico;
     private ArrayList<String> nombresVulgares;
+    private String ambiente;
+    private String clasificacion;
     private String familia;
     private int riego;
     private int sol;
 
-    public Planta(String nombre, String familia, int riego, int sol){
+    public Planta(String nombre, String clasificacion, String ambiente, String familia, int riego, int sol){
         this.nombreCientifico = nombre;
+        this.clasificacion = clasificacion;
+        this.ambiente = ambiente;
         this. familia = familia;
         this.riego = riego;
         this.sol = sol;
@@ -20,6 +24,9 @@ public class Planta {
     }
     public String getNombreCientifico(){
         return this.nombreCientifico;
+    }
+    public String getClasificacion(){
+        return this.clasificacion;
     }
     public int getRiego(){
         return this.riego;

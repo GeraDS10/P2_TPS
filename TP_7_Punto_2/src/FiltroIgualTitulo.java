@@ -6,6 +6,7 @@ public class FiltroIgualTitulo extends Filtro{
     }
     @Override
     public boolean cumple(Documento d) {
+
         return d.getTitulo().equals(this.tituloBuscado);
     }
 }
