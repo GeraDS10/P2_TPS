@@ -1,8 +1,9 @@
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.Objects;
 
-public class Socio {
+public class Socio{
     private String nombre;
     private String apellido;
     private LocalDate fechaNacimiento;
@@ -32,7 +33,31 @@ public class Socio {
         this.alquileres.add(a);
     }
 
-   /* Prueba fechas
+    public boolean pagasteAlquilerMasDe(int precioBase){
+        for (Alquiler a: alquileres
+             ) {
+            if(a.getPrecioAlquiler() > precioBase){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isPagoUltimaCuota() {
+        return pagoUltimaCuota;
+    }
+
+    public boolean alquiLasteCancha(Cancha c){
+        for (Alquiler a: this.alquileres
+             ) {
+            if((((Integer) a.getIdCancha()).equals(c.getId() ))){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /* Prueba fechas
     public static void main(String[] args) {
         Socio s1 = new Socio("Carlos", "Sanchez", LocalDate.of(1992, 10, 15));
         Socio s2 = new Socio("Pedro", "Gomez", LocalDate.of(1992, 11, 15));

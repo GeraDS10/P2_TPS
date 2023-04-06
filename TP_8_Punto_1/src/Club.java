@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Club {
     private String nombre;
@@ -27,7 +29,7 @@ public class Club {
         }
     }
 
-    public ArrayList<Socio> buscar(Filtro f){
+    public ArrayList<Socio> buscar(Filtro f, Comparator<Socio> comparador){
         ArrayList<Socio> encontrados = new ArrayList<>();
         for (Socio s: this.socios
              ) {
@@ -35,6 +37,7 @@ public class Club {
                 encontrados.add(s);
             }
         }
+        Collections.sort(encontrados, comparador);
         return encontrados;
     }
 }
